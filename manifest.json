@@ -1,0 +1,32 @@
+{
+    "manifest_version": 3,
+    "name": "GChat-Send-Notification",
+    "description": "This extension will help for sending a notification via mail to the user",
+    "version": "0.0.1",
+    "permissions": [ "identity","storage"],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA07rgPFZQTKYGZ7xz/JPvCu0uTySD2gdY36JmC96zC0wW3Kx+BQA7wXSgNe8sVFnO703w72gtdJLlIRgT/Ypx1wr3X8j6iBg7gMSEhmCopY8/OKEkaoW7pY8h3eVDFNcFBwgPU+bu7t9VIPCvOXcpY4gc33xQiabywnntm4Zd2HuhRfATg+ZdN/ytIncAOaBpcsJ82EEoQQ6nVu8dNehsIrX9u8/+3CK6/nX8df2GXnhQR8PvUaCDpQKb8uay1bQoFuHnRzFqRkPOhLHoMcZOPmMfKfxpdOaGTOyQ/mjw4lm9xqWIAMRKKwUfL2hGyYtROnbOfzCdAoyFhdH3YstbBQIDAQAB",
+    "icons": {
+        "128": "logo.png",
+        "64": "logo.png"
+    },
+    "content_scripts": [
+        {
+          "matches": ["https://chat.google.com/*"],
+          "css": ["content-styles.css"],
+          "js": ["js/jquery.min.js","content-script.js"],
+          "run_at": "document_idle",
+          "all_frames": true
+        }
+    ],
+    "web_accessible_resources": [
+      {
+        "resources": [
+          "js/*.js"
+        ],
+        "matches": ["https://chat.google.com/*", "https://mail.google.com/*"]
+      }
+    ]
+  }
